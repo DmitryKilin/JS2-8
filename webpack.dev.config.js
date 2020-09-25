@@ -1,5 +1,6 @@
 const path = require('path');
-const HtmlWebpackPlagin = require('html-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   entry: {
@@ -38,10 +39,16 @@ module.exports = {
         ]
     },
     plugins: [
-        new HtmlWebpackPlagin({
+        new HtmlWebpackPlugin({
             template: 'src/public/index.html',
             filename: 'index.html',
             excludeChunks: ['server']
-        })
-    ]
+        }),
+        new CopyPlugin({
+            patterns: [
+                { from: path.resolve(__dirname, './src/public/img/'),
+                    to: path.resolve(__dirname, './dist/public/img/') },
+            ],
+        }),
+    ],
 };
