@@ -44,11 +44,9 @@ module.exports = {
             filename: 'index.html',
             excludeChunks: ['server']
         }),
-        new CopyPlugin({
-            patterns: [
-                { from: path.resolve(__dirname, './src/public/img/'),
-                    to: path.resolve(__dirname, './dist/public/img/') },
-            ],
-        }),
+        new CopyPlugin([
+                { from: path.join(__dirname, 'src/public/img'), to: path.join(__dirname, 'dist/public/img')},
+            ]
+        ),
     ],
 };
