@@ -1,9 +1,9 @@
 const cartItem = {
-    props: ['cartItem', 'img'],
+    props: ['cartItem'],
     template: `
                 <div class="cart-item">
                     <div class="product-bio">
-                        <img :src="img" alt="Some image">
+                        <img :src="cartItem.img" alt="Some image">
                         <div class="product-desc">
                             <p class="product-title">{{cartItem.product_name}}</p>
                             <p class="product-quantity">Quantity: {{cartItem.quantity}}</p>
@@ -20,7 +20,6 @@ const cartItem = {
 const cart = {
     data(){
       return {
-          imgCart: 'https://placehold.it/50x100',
           cartUrl: '/getBasket.json',
           cartItems: [],
           showCart: false,
@@ -86,7 +85,6 @@ const cart = {
                 v-for="item of cartItems" 
                 :key="item.id_product"
                 :cart-item="item" 
-                :img="imgCart"
                 @remove="remove">
                 </cart-item>
             </div>

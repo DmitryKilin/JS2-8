@@ -1,8 +1,8 @@
 const product = {
-    props: ['product', 'img'],
+    props: ['product'],
     template: `
     <div class="product-item">
-                <img :src="img" alt="Some img">
+                <img :src="product.img" width="200" height="150" alt="Some img">
                 <div class="desc">
                     <h3>{{product.product_name}}</h3>
                     <p>{{product.price}} $</p>
@@ -18,7 +18,6 @@ const products = {
             catalogUrl: '/catalogData.json',
             products: [],
             filtered: [],
-            imgCatalog: 'https://placehold.it/200x150',
         }
     },
     components: {
@@ -41,7 +40,7 @@ const products = {
     },
     template: `
         <div class="products">
-            <product v-for="item of filtered" :key="item.id_product" :img="imgCatalog" :product="item"></product>
+            <product v-for="item of filtered" :key="item.id_product" :product="item"></product>
         </div>
     `
 };
